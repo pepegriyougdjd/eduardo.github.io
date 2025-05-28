@@ -3,29 +3,33 @@
     --transition-duration: 0.3s;
     --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
 }
-/* Tema claro - Todo blanco */
+
+/* Tema claro */
 [data-theme="light"] {
-    --color-primary: theme("colors.white");
-    --color-secondary: theme("colors.white");
-    --color-text: theme("colors.white");
-    --color-text-offset: theme("colors.white" / 90%);
-    --color-background: theme("colors.white");
-    --color-background-offset: theme("colors.white" / 95%);
-    --color-border: theme("colors.white" / 80%);
-    --color-accent: theme("colors.white");
-    --glow-color: rgba(255, 255, 255, 1);
-/* Tema oscuro - Todo blanco */
-[data-theme="dark"] {
-    --color-primary: theme("colors.white");
-    --color-secondary: theme("colors.white");
-    --color-text: theme("colors.white");
-    --color-text-offset: theme("colors.white" / 90%);
-    --color-background: theme("colors.white");
-    --color-background-offset: theme("colors.white" / 95%);
-    --color-border: theme("colors.white" / 80%);
+    --color-primary: theme("colors.blue.700");
+    --color-secondary: theme("colors.blue.600");
+    --color-text: theme("colors.gray.900");
+    --color-text-offset: theme("colors.gray.600");
+    --color-background: theme("colors.gray.50");
+    --color-background-offset: theme("colors.gray.100");
+    --color-border: theme("colors.gray.900" / 10%);
     --color-accent: theme("colors.white");
     --glow-color: rgba(255, 255, 255, 1);
 }
+
+/* Tema oscuro */
+[data-theme="dark"] {
+    --color-primary: theme("colors.blue.600");
+    --color-secondary: theme("colors.blue.500");
+    --color-text: theme("colors.gray.50");
+    --color-text-offset: theme("colors.gray.400");
+    --color-background: theme("colors.gray.900");
+    --color-background-offset: theme("colors.gray.800");
+    --color-border: theme("colors.gray.50" / 10%);
+    --color-accent: theme("colors.white");
+    --glow-color: rgba(255, 255, 255, 1);
+}
+
 /* Transiciones automáticas para cambio de tema */
 * {
     transition: 
@@ -34,6 +38,7 @@
         border-color var(--transition-duration) var(--transition-easing),
         box-shadow var(--transition-duration) var(--transition-easing);
 }
+
 /* Efectos de movimiento con color blanco */
 @keyframes whiteGlow {
     0%, 100% {
@@ -43,6 +48,7 @@
         box-shadow: 0 0 20px var(--glow-color), 0 0 30px var(--glow-color);
     }
 }
+
 @keyframes whiteShimmer {
     0% {
         background-position: -100% 0;
@@ -51,6 +57,7 @@
         background-position: 100% 0;
     }
 }
+
 @keyframes whitePulse {
     0%, 100% {
         opacity: 0.7;
@@ -59,14 +66,17 @@
         opacity: 1;
     }
 }
+
 /* Clases para efectos automáticos */
 .white-glow {
     animation: whiteGlow 2s ease-in-out infinite;
 }
+
 .white-shimmer {
     position: relative;
     overflow: hidden;
 }
+
 .white-shimmer::before {
     content: '';
     position: absolute;
@@ -82,15 +92,18 @@
     );
     animation: whiteShimmer 2s infinite;
 }
+
 .white-pulse {
     animation: whitePulse 1.5s ease-in-out infinite;
 }
+
 /* Efecto de hover con movimiento blanco */
 .interactive-element {
     position: relative;
     overflow: hidden;
     transition: all var(--transition-duration) var(--transition-easing);
 }
+
 .interactive-element::after {
     content: '';
     position: absolute;
@@ -107,9 +120,23 @@
     transition: transform var(--transition-duration) var(--transition-easing);
     pointer-events: none;
 }
+
 .interactive-element:hover::after {
     transform: scale(1);
     animation: whitePulse 0.6s ease-out;
 }
+
 /* Auto-aplicación de tema basado en preferencias del sistema */
 @media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary: theme("colors.blue.600");
+        --color-secondary: theme("colors.blue.500");
+        --color-text: theme("colors.gray.50");
+        --color-text-offset: theme("colors.gray.400");
+        --color-background: theme("colors.gray.900");
+        --color-background-offset: theme("colors.gray.800");
+        --color-border: theme("colors.gray.50" / 10%);
+        --color-accent: theme("colors.white");
+        --glow-color: rgba(255, 255, 255, 1);
+    }
+}
